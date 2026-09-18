@@ -19,14 +19,14 @@ function ProtectedReceptionist({ children }) {
   if (!isAuthenticated) return <Navigate to="/login" replace />;
   if (user?.role !== "receptionist") {
     return (
-      <div className="auth-page" style={{background:"#f1f5f9"}}>
-        <div className="auth-card" style={{textAlign:"center"}}>
+      <div className="auth-page" style={{ background: "#f1f5f9" }}>
+        <div className="auth-card" style={{ textAlign: "center" }}>
           <h2>Access Restricted</h2>
           <p className="muted">You are logged in as <b>{user?.role}</b>.</p>
           <p className="muted small">This project implements <b>Receptionist dashboard only</b> (Sagar Bhagat scope). Administrator / Restaurant Owner / Housekeeping dashboards are not built as per Phase 2 instruction.</p>
           <p className="muted small">Please logout and login as Receptionist.</p>
-          <div style={{marginTop:16, display:"flex", gap:8, justifyContent:"center"}}>
-            <a href="/login" className="btn btn-outline" onClick={()=>{ localStorage.removeItem("hms_auth"); }}>Logout & Go to Login</a>
+          <div style={{ marginTop: 16, display: "flex", gap: 8, justifyContent: "center" }}>
+            <a href="/login" className="btn btn-outline" onClick={() => { localStorage.removeItem("hms_auth"); }}>Logout & Go to Login</a>
           </div>
         </div>
       </div>
@@ -87,7 +87,7 @@ function AppRoutes() {
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/Hotel-Management-System">
         <AppRoutes />
       </BrowserRouter>
     </AuthProvider>
